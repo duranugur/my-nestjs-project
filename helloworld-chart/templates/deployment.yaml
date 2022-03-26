@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deploy.name }}-deployment
+  namespace: {{ .Values.deploy.namespace }}
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ .Values.deploy.name }}-app
+  replicas: {{ .Values.deploy.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deploy.name }}-app
+    spec:
+      containers:
+      - name: php
+        image: duranugur/hello-world:{{ .Values.deploy.tag }}
+        imagePullPolicy: Always
+      dnsPolicy: Default

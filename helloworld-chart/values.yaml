@@ -1,0 +1,9 @@
+deploy:
+  name: hello-world-deployment
+  namespace: test
+  hosts: my-app-hosts
+  ingress_svc: hello-svc
+  url: my-app
+  replicas: 1
+  repository: duranugur/hello-world
+  tag: 1.0.1
