@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: my-nestjs-project-service
 spec:
+  type: NodePort
   selector:
     app: my-nestjs-app
   ports:
     - name: http
       port: 3000
       protocol: TCP
-      type: NodePort
