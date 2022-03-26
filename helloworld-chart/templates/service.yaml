@@ -7,7 +7,7 @@ spec:
   selector:
     app: {{ .Values.deploy.name }}-app
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    type: NodePort
+    - name: http
+      port: 80
+      protocol: TCP
+      type: NodePort
