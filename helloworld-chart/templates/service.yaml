@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.deploy.name }}-service
+  name: my-nestjc-project-service
 spec:
   type: ClusterIP
   selector:
