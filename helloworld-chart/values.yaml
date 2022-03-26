@@ -1,5 +1,5 @@
 deploy:
-  name: my-nestjs
+  name: my-nestjs-project
   namespace: test
   hosts: my-nestjs-hosts
   ingress_svc: hello-svc
