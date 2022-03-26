@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: {{ .Values.deploy.name }}-app
+    app: my-nestjs-app
   ports:
     - name: http
       port: 3000
