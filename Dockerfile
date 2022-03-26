@@ -11,5 +11,3 @@ COPY . .
 RUN yarn build
 
 CMD ["yarn", "start:prod"]
-
-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
