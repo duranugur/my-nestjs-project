@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-nestjs-project-service
+  name: {{ .Values.deploy.name }}-service
+  namespace: {{ .Values.deploy.namespace }}
 spec:
   type: ClusterIP
   selector:
-    app: my-nestjs-app
+    app: {{ .Values.deploy.name }}-app
   ports:
     - name: http
       port: 3000
       protocol: TCP
+      type: NodePort
