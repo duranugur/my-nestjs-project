@@ -1,9 +1,9 @@
 deploy:
-  name: hello-world-deployment
+  name: my-nestjs-deployment
   namespace: test
-  hosts: my-app-hosts
+  hosts: my-nestjs-hosts
   ingress_svc: hello-svc
-  url: my-app
+  url: my-nestjs
   replicas: 1
   repository: duranugur/hello-world
   tag: 1.0.1
