@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: php
-        image: duranugur/my-netjs-project:{{ .Values.deploy.tag }}
+        image: duranugur/my-nestjs-project:{{ .Values.deploy.tag }}
         imagePullPolicy: Always
       dnsPolicy: Default
