@@ -5,5 +5,5 @@ deploy:
   ingress_svc: hello-svc
   url: my-app
   replicas: 1
-  repository: duranugur/hello-world
+  repository: duranugur/my-nestjs-project
   tag: 1.0.1
