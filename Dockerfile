@@ -5,7 +5,11 @@ WORKDIR /workspace
 COPY package.json yarn.lock /workspace/
 
 RUN yarn
-RUN yarn test:cov
+#RUN yarn lint
+#RUN yarn format:check
+#RUN yarn test
+#RUN yarn test:cov
+#RUN yarn test:e2e
 
 COPY . .
 
