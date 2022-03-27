@@ -5,7 +5,7 @@ WORKDIR /workspace
 COPY package.json yarn.lock /workspace/
 
 RUN yarn
-#RUN yarn:test
+#RUN yarn
 
 COPY . .
 
