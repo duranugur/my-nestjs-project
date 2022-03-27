@@ -10,5 +10,5 @@ RUN yarn
 COPY . .
 
 RUN yarn build
-
+CMD ["yarn", "yarn:format:check"]
 CMD ["yarn", "start:prod"]
