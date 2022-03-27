@@ -5,14 +5,14 @@ WORKDIR /workspace
 COPY package.json yarn.lock /workspace/
 
 RUN yarn
-#RUN yarn lint
-#RUN yarn format:check
-#RUN yarn test
-#RUN yarn test:cov
-#RUN yarn test:e2e
 
 COPY . .
 
 RUN yarn build
 
+CMD ["yarn", "yarn:lint"]
+CMD ["yarn", "yarn:format:check"]
+CMD ["yarn", "yarn:test"]
+CMD ["yarn", "yarn:test.conv"]
+CMD ["yarn", "yarn:e2e"]
 CMD ["yarn", "start:prod"]
