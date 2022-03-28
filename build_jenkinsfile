@@ -1,0 +1,31 @@
+String gitOrigin = "git@github.com:duranugur/my-nestjs-project.git"
+String triggerJob = "my-nestjs-project-deploy-production"
+String dockerhub = "duranugur/my-nestjs-project"
+node{
+    stage ('Checkout') {
+        checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd31c6f13-e1d9-4b4b-8965-cff2e6f91581', url: "${gitOrigin}"]]])
+        env.git_commit_id = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+		env.tag = env.micro_service + '-' + env.git_commit_id + '-Build' + currentBuild.number
+		echo env.tag
+    }
+    withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+        stage ("Login Docker Hub"){
+            sh '''
+            docker login --username=$docker_username --password=$docker_password
+            '''
+        }
+    }
+    stage("Build APP Dockerfile"){
+        sh """
+        docker build -t ${dockerhub}:${tag} .
+        """
+    }
+    stage("Push Docker Image"){
+         sh """
+         docker push ${dockerhub}:${tag}
+        """
+    }
+    stage ('Deployment Job Trigger') {
+        build job: "${triggerJob}", parameters: [[$class: 'StringParameterValue', name: 'tag', value: "$tag"]],wait: false
+    }
+}
