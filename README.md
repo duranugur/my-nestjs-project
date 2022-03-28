@@ -5,4 +5,5 @@ Proje bir POC çalışması olup netjs uygulamasını end2end olarak minikube ü
 - Sunucu üzerine minikube , docker, k8s , jenkins ve ngrook kurulumları tamamlandı.
 - CI / CD süreci için jenkins opensource tool kullanıldı.
 - k8s deployment modeli olan helm chart yapısı kullanıldı.
+- İmage reposity için private olan dockerhub repository kullanıldı.
 - Free SSL generator için sunucu üzerine ngrok kurularak public olarak servis erişime açılması sağlandı.
